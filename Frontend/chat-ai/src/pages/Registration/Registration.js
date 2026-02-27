@@ -1,8 +1,25 @@
-
+import { useState } from "react";
 import css from "./Registration.module.css"
 import { Button, Input } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+    
+    const navigate = useNavigate()
+    const [ nickName, setNickName ] = useState('');
+    const [ chatName, setChatName ] = useState('');
+
+    const handleNickName = (e) => {
+    setNickName(e.target.value);
+};
+    const handleChatName = (e) => {
+    setChatName(e.target.value);
+
+};
+
+    const hendleChat = () => {
+        navigate(`/${chatName}`)
+    }
 
     return (
         <>
@@ -16,7 +33,8 @@ const Registration = () => {
                     type="text" 
                     placeholder="Enter nickname" 
                     className={css.NickName}
-                    value={''}
+                    value={nickName}
+                    onChange={handleNickName}
                     />
                     
                     <label className={css.label}>Chat name</label>
@@ -26,14 +44,15 @@ const Registration = () => {
                     type="text" 
                     placeholder="Enter the chat name" 
                     className={css.ChatName} 
-                    value={''}
+                    value={chatName}
+                    onChange={handleChatName}
                     />
                     
 
-                    <Button className={css.Button}>Войти</Button>
+                    <Button onClick={hendleChat} className={css.Button}>Войти</Button>
                 </div>
             </div>
-            <Button className={css.buttonAI}>Chat AI</Button>
+            <Button  className={css.buttonAI}>Chat AI</Button>
         </>
     )
 }
