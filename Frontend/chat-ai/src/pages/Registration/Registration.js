@@ -1,24 +1,35 @@
-import React from "react";
+
 import css from "./Registration.module.css"
 import { Button, Input } from "antd";
 
 const Registration = () => {
 
-    const inputField = document.querySelector('NickName');
-    
-inputField.addEventListener('input', function(event) {
-    console.log('Текущий текст:', event.target.value);
-});
-
-
-return (
+    return (
         <>
             <div className={css.wrapper} >
                 <div className={css.InputBlock}>
+
                     <label className={css.label}>Nickname</label>
-                    <Input id="NickName" required type="text" placeholder="Enter nickname" className={css.NickName}></Input>
+                    <Input 
+                    id="NickName" 
+                    required 
+                    type="text" 
+                    placeholder="Enter nickname" 
+                    className={css.NickName}
+                    value={''}
+                    />
+                    
                     <label className={css.label}>Chat name</label>
-                    <Input id="ChatName" required type="text" placeholder="Enter the chat name" className={css.ChatName} value={""}></Input>
+                    <Input 
+                    id="ChatName" 
+                    required 
+                    type="text" 
+                    placeholder="Enter the chat name" 
+                    className={css.ChatName} 
+                    value={''}
+                    />
+                    
+
                     <Button className={css.Button}>Войти</Button>
                 </div>
             </div>
