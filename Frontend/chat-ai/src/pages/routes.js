@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router-dom"
-import Chat_user from "./Chat_users/Chat_users"
+import ChatUser from "./Chat_users/Chat_users"
+import Registration from "./Registration/Registration"
+import PageNotFound from "./Page_not_found/Page_not_found"
 
 
-
-export default function Router() {
+const Router=()=> {
     return (
-<Routes>
-<Route path="/" element={<Chat_user/>}></Route>
-
-
-</Routes>
+        <Routes>
+            <Route path="/" element={<Registration />}></Route>
+            <Route path="/:chatName" element={<ChatUser />}></Route>
+            <Route path="*" element={<PageNotFound />}></Route>
+        </Routes>
     )
 }
 
+export default Router;
