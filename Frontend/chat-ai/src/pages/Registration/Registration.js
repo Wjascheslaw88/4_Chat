@@ -18,8 +18,8 @@ const Registration = () => {
 };
 
     const hendleChat = () => {
-        navigate(`/${chatName}`)
-    }
+        navigate(`/${chatName}/${nickName}`)
+    } 
 
     return (
         <>
