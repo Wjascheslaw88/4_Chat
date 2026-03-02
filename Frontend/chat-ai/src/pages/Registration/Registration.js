@@ -1,7 +1,8 @@
 import { useState } from "react";
-import css from "./Registration.module.css"
+
 import { Button, Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import RegistrationP from "./RegistgrationP";
 
 const Registration = () => {
     
@@ -23,36 +24,13 @@ const Registration = () => {
 
     return (
         <>
-            <div className={css.wrapper} >
-                <div className={css.InputBlock}>
-
-                    <label className={css.label}>Nickname</label>
-                    <Input 
-                    id="NickName" 
-                    required 
-                    type="text" 
-                    placeholder="Enter nickname" 
-                    className={css.NickName}
-                    value={nickName}
-                    onChange={handleNickName}
-                    />
-                    
-                    <label className={css.label}>Chat name</label>
-                    <Input 
-                    id="ChatName" 
-                    required 
-                    type="text" 
-                    placeholder="Enter the chat name" 
-                    className={css.ChatName} 
-                    value={chatName}
-                    onChange={handleChatName}
-                    />
-                    
-
-                    <Button onClick={hendleChat} className={css.Button}>Войти</Button>
-                </div>
-            </div>
-            <Button  className={css.buttonAI}>Chat AI</Button>
+        <RegistrationP 
+        nickName={nickName}
+        chatName={chatName}
+        handleNickName={handleNickName}
+        handleChatName={handleChatName}
+        hendleChat={hendleChat}
+        />
         </>
     )
 }
