@@ -1,0 +1,29 @@
+{
+  "name": "beckend",
+  "version": "1.0.0",
+  "description": "Backend for AI chat application",
+  "main": "index.js",
+  "scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js",
+  "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wjascheslaw88/4_Chat_AI.Backend.git"
+  },
+  "author": "Wjacheslaw Prochoda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wjascheslaw88/4_Chat_AI.Backend/issues"
+  },
+  "homepage": "https://github.com/Wjascheslaw88/4_Chat_AI.Backend#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
