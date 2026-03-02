@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-import { Button, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import RegistrationP from "./RegistgrationP";
 
