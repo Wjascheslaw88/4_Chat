@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const chat1 = require('./chat1')
+const chat2 = require('./chat2')
 require('dotenv').config();
 
 // Создаем приложение Express
@@ -15,6 +17,12 @@ app.use(express.json()); // Парсим JSON из запросов
 // Базовый маршрут для проверки
 app.get('/', (req, res) => {
   res.json({ message: 'Сервер работает! Бэкенд для AI чата готов к работе' });
+});
+app.get('/chat1', (req, res) => {
+  res.json( chat1 );
+});
+app.get('/chat2', (req, res) => {
+  res.json(chat2 );
 });
 
 // Тестовый маршрут для чата
