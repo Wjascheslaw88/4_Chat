@@ -17,18 +17,18 @@ app.use(express.json()); // Парсим JSON из запросов
 // Базовый маршрут для проверки
 
 app.get('/chat1', (req, res) => {
-  res.json( chat1 );
+  res.json(chat1);
 });
 app.get('/chat2', (req, res) => {
-  res.json(chat2 );
+  res.json(chat2);
 });
 
 // Тестовый маршрут для чата
 app.post('/api/chat', (req, res) => {
   const { message } = req.body;
-  
+
   // Пока просто возвращаем эхо-ответ
-  res.json({ 
+  res.json({
     reply: `Вы сказали: "${message}". Здесь будет ответ от AI`,
     timestamp: new Date().toISOString()
   });
