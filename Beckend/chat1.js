@@ -44,4 +44,4 @@ const chat1 = [
     }
 ]
 
-module.export = chat1;
+module.exports = chat1;

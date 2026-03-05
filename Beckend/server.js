@@ -18,6 +18,12 @@ app.use(express.json()); // Парсим JSON из запросов
 app.get('/', (req, res) => {
   res.json({ message: 'Сервер работает! Бэкенд для AI чата готов к работе' });
 });
+app.get('/chat1', (req, res) => {
+  res.json( chat1 );
+});
+app.get('/chat2', (req, res) => {
+  res.json(chat2 );
+});
 
 // Тестовый маршрут для чата
 app.post('/api/chat', (req, res) => {
