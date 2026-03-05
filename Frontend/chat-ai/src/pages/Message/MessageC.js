@@ -6,24 +6,22 @@ import { useParams } from "react-router-dom";
 const MessageC = () => {
 
     let params = useParams()
-
     const userName = params.userName
     const chatName = params.chatName
 
     const [messageDate, setMessageDate] = useState([])
-    useEffect(() => { fetchMessage()}, [])
+    useEffect(() => { fetchMessage() }, [])
 
     const fetchMessage = async () => {
-            fetch(`http://localhost:3001/${chatName}`)
+        fetch(`http://localhost:3001/${chatName}`)
             .then(response => response.json())
-                .then(data => {
+            .then(data => {
                 if (Array.isArray(data)) {
                     setMessageDate(data);
                 }
-                        
-                 })
-        }
-  
+
+            })
+    }
 
     return (
         <div >
