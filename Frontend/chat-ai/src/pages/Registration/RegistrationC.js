@@ -21,7 +21,6 @@ const Registration = () => {
     } 
 
     return (
-        <>
         <RegistrationP 
         nickName={nickName}
         chatName={chatName}
@@ -29,7 +28,6 @@ const Registration = () => {
         handleChatName={handleChatName}
         hendleChat={hendleChat}
         />
-        </>
     )
 }
 
