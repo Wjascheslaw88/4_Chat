@@ -28,7 +28,7 @@ const MessageC = () => {
             {messageDate.map(message => {
 
 
-            const isAutor = userName===message.autor.name
+            const isAutor = userName===message?.autor?.name
 
                 return(
                     <MessageP
