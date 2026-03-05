@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import MessageP from "./MessageP"
+import { useParams } from "react-router-dom";
 
 
 const MessageC = () => {
+
+    let params = useParams()
+
+    const userName = params.userName
+    const chatName = params.chatName
 
     const [messageDate, setMessageDate] = useState([])
     useEffect(() => { fetchMessage()}, [])
 
     const fetchMessage = async () => {
-            fetch("http://localhost:3001/chat1")
+            fetch(`http://localhost:3001/${chatName}`)
             .then(response => response.json())
                 .then(data => {
                 if (Array.isArray(data)) {
@@ -17,8 +23,10 @@ const MessageC = () => {
                         
                  })
         }
+  
+
     return (
-        <div className="chat-container">
+        <div >
             {messageDate.map(message => (
                 <MessageP
                     text={message.text}

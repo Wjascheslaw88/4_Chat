@@ -6,9 +6,7 @@
   transition: background-color 0.2s;
 }
 
-.wrapper:hover {
-  background-color: #f5f5f5;
-}
+
 
 .images {
   width: 48px;
@@ -28,12 +26,12 @@
 .nickname {
   font-weight: 600;
   font-size: 0.95rem;
-  color: #1a1a1a;
+  color: #ec5454;
 }
 
 .message {
   font-size: 0.9rem;
-  color: #4a4a4a;
+  color: #ffffff;
   line-height: 1.4;
   word-break: break-word;
 }
