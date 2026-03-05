@@ -1,3 +1,4 @@
+import MessageC from "../Message/MessageC";
 import css from "./Chat_users.module.css"
 import { Input } from "antd";
 
@@ -17,7 +18,7 @@ const ChatUserP = (props) => {
             <div className={css.chat}>
                 <div className={css.nameChat}>{props.chatName}</div>
                 <div className={css.chat_field}>
-
+                    <MessageC/>
                 </div>
                 <div className={css.input}>
                     <Search
