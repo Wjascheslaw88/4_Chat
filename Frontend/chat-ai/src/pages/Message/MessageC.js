@@ -22,15 +22,22 @@ const MessageC = () => {
 
             })
     }
-
+          
     return (
         <div >
-            {messageDate.map(message => (
-                <MessageP
-                    text={message.text}
-                    author={message.author.name}
-                />
-            ))}
+            {messageDate.map(message => {
+
+
+            const isAutor = userName===message.autor.name
+
+                return(
+                    <MessageP
+                        text={message.text}
+                        author={message.author.name}
+                        isAutor
+                    />      
+                )
+            })}
         </div>
     )
 }

@@ -3,6 +3,7 @@ import css from "./Message.module.css"
 
 const MessageP = (props)=>{
 
+    
     return(
         <div className={css.wrapper}>
             <img className={css.images} alt="иконка" />

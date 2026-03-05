@@ -1,37 +1,52 @@
 .wrapper {
-  display: flex;
-  gap: 12px;
-  padding: 12px 16px;
-  border-bottom: 1px solid #eaeaea;
-  transition: background-color 0.2s;
+    display: flex;
+    margin: 10px;
+    max-width: 70%;
 }
 
+.myMessage {
+    align-self: flex-end;
+    margin-left: auto; /* Сдвигает вправо */
+    flex-direction: row-reverse; /* Меняет порядок элементов */
+}
 
+.otherMessage {
+    align-self: flex-start;
+    margin-right: auto; /* Сдвигает влево */
+}
 
 .images {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc; /* Временный фон для иконки */
+    margin: 0 10px;
 }
 
 .nickAndMessage {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
 }
 
 .nickname {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #ec5454;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .message {
-  font-size: 0.9rem;
-  color: #ffffff;
-  line-height: 1.4;
-  word-break: break-word;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+/* Стили для моих сообщений */
+.myMessage .message {
+    background-color: #007bff;
+    color: white;
+}
+
+.myMessage .nickname {
+    text-align: right;
 }

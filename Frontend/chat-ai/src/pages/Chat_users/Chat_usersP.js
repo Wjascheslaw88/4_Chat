@@ -9,6 +9,7 @@ const ChatUserP = (props) => {
     const { Search } = Input;
     const onSearch = (value, _e, info) => console.log(info?.source, value);
 
+  
     return (
         <div className={css.wrapper}>
             <div className={css.user}>
@@ -24,9 +25,13 @@ const ChatUserP = (props) => {
                     <Search
                         placeholder="input search text"
                         allowClear
-                        enterButton="Search"
+                         enterButton="Search"
                         size="large"
-                        onSearch={onSearch}
+                        onSearch={props.onSend}
+                        onChange={(sss) => {
+                        props.setTextInput(sss.target.value)
+                        }}
+                        value={props.textInput}
                     />
                 </div>
             </div>
