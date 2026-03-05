@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const chat1 = require('./chat1')
+const chat2 = require('./chat2')
 require('dotenv').config();
 
 // Создаем приложение Express
