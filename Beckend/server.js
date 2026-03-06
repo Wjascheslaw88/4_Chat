@@ -24,7 +24,45 @@ app.get('/chat2', (req, res) => {
   res.json(chat2);
 });
 
+app.post('/newMessage', (req, res) => {
+  console.log('=== INCOMING REQUEST TO /newMessage ===');
+  console.log('Headers:', req.headers);
+  console.log('Full body:', req.body);
+  console.log('Message:', req.body.message);
 
+
+  const userName = req.body.userName;
+
+
+let userId = null;
+  for (let msg of chat1) {
+    if (msg.author.name === userName) {
+      userId = msg.author.id;
+      break;
+    }
+  }
+if (!userId) {
+    const maxId = Math.max(...chat1.map(msg => msg.author.id), 0);
+    userId = maxId + 1;
+}
+
+ const newMessage = {
+    id: chat1.length + 1,
+    text: req.body.message,
+    author: {
+      id: userId,
+       name: userName
+    },
+    createdAt: new Date().toISOString()
+  }; 
+
+  chat1.push(newMessage);
+
+  res.json({
+    success: true,
+    message: newMessage
+  });
+});
 
 // Тестовый маршрут для чата
 app.post('/api/chat', (req, res) => {

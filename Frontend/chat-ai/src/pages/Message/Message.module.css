@@ -4,23 +4,34 @@
     max-width: 70%;
 }
 
+/* Мои сообщения - справа */
 .myMessage {
-    align-self: flex-end;
-    margin-left: auto; /* Сдвигает вправо */
-    flex-direction: row-reverse; /* Меняет порядок элементов */
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
+/* Чужие сообщения - слева */
 .otherMessage {
-    align-self: flex-start;
-    margin-right: auto; /* Сдвигает влево */
+    justify-content: flex-start;
+    margin-right: auto;
 }
 
 .images {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #ccc; /* Временный фон для иконки */
+    background-color: #ccc;
     margin: 0 10px;
+}
+
+/* Порядок элементов для моих сообщений */
+.myMessage .images {
+    order: 2;  /* Аватарка справа */
+}
+
+.myMessage .nickAndMessage {
+    order: 1;  /* Текст слева от аватарки */
+    align-items: flex-end;  /* Текст прижат к правому краю */
 }
 
 .nickAndMessage {
@@ -34,19 +45,25 @@
     font-size: 14px;
 }
 
+/* Текст никнейма для моих сообщений */
+.myMessage .nickname {
+    text-align: right;
+}
+
 .message {
-    background-color: #f0f0f0;
     padding: 10px;
     border-radius: 10px;
     word-wrap: break-word;
+    max-width: 100%;
 }
 
-/* Стили для моих сообщений */
+/* Цвет сообщений */
 .myMessage .message {
-    background-color: #007bff;
+    background-color: #007bff;  /* Синий для моих */
     color: white;
 }
 
-.myMessage .nickname {
-    text-align: right;
+.otherMessage .message {
+    background-color: #e9e9eb;  /* Серый для чужих */
+    color: black;
 }

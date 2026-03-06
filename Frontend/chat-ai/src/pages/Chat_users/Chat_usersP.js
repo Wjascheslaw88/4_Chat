@@ -9,7 +9,7 @@ const ChatUserP = (props) => {
     const { Search } = Input;
     const onSearch = (value, _e, info) => console.log(info?.source, value);
 
-  
+
     return (
         <div className={css.wrapper}>
             <div className={css.user}>
@@ -19,17 +19,19 @@ const ChatUserP = (props) => {
             <div className={css.chat}>
                 <div className={css.nameChat}>{props.chatName}</div>
                 <div className={css.chat_field}>
-                    <MessageC/>
+                    <MessageC
+                        messages={props.messages}
+                        userName={props.userName} />
                 </div>
                 <div className={css.input}>
                     <Search
                         placeholder="input search text"
                         allowClear
-                         enterButton="Search"
+                        enterButton="Search"
                         size="large"
                         onSearch={props.onSend}
                         onChange={(sss) => {
-                        props.setTextInput(sss.target.value)
+                            props.setTextInput(sss.target.value)
                         }}
                         value={props.textInput}
                     />
