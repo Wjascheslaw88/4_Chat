@@ -50,7 +50,6 @@ app.post ('/NewMessage',(req, res)=>{
 app.get ('/messageByChatName', (req, res) =>{
   const chatName = req.query.chatName; 
   const message = findMessagesByChatName(chatName)
-
   res.json(message);
 })
 
