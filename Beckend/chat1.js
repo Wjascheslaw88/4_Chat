@@ -1,4 +1,15 @@
+
+
+const chat_1 = {
+    id: "chat_1",
+    title: "chat_1",
+    // messages: chat1
+} 
+
 const chat1 = [
+
+
+
     {id: 1,
         text:"привет",
         author: {
@@ -44,4 +55,4 @@ const chat1 = [
     }
 ]
 
-module.exports = chat1;
+module.exports = {chat_1, chat1};
