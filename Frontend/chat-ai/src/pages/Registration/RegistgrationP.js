@@ -31,7 +31,9 @@ const RegistrationP = (props) => {
                         value={props.chatName}
                         onChange={props.handleChatName}
                     />
-                    <Button onClick={props.hendleChat} className={css.Button}>Войти</Button>
+                    <Button 
+                    onClick={props.onClickButton}
+                    className={css.Button}>Войти</Button>
                 </div>
             </div>
             <Button className={css.buttonAI}>Chat AI</Button>

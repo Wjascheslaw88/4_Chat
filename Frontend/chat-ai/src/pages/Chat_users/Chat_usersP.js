@@ -13,7 +13,7 @@ const ChatUserP = (props) => {
     return (
         <div className={css.wrapper}>
             <div className={css.user}>
-                <div className={css.myName}>{props.userName}</div>
+                <div className={css.myName}>{props.userName}{props.users}</div>
                 <div className={css.participants}></div>
             </div>
             <div className={css.chat}>
@@ -21,7 +21,8 @@ const ChatUserP = (props) => {
                 <div className={css.chat_field}>
                     <MessageC
                         messages={props.messages}
-                        userName={props.userName} />
+                        userName={props.userName}
+                    />
                 </div>
                 <div className={css.input}>
                     <Search
@@ -30,9 +31,7 @@ const ChatUserP = (props) => {
                         enterButton="Search"
                         size="large"
                         onSearch={props.onSend}
-                        onChange={(sss) => {
-                            props.setTextInput(sss.target.value)
-                        }}
+                        onChange={(sss) => {props.setTextInput(sss.target.value)}}
                         value={props.textInput}
                     />
                 </div>
