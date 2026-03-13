@@ -7,7 +7,6 @@ import { Input } from "antd";
 const ChatUserP = (props) => {
 
     const { Search } = Input;
-    const onSearch = (value, _e, info) => console.log(info?.source, value);
 
 
     return (
