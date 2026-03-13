@@ -36,7 +36,7 @@ const RegistrationP = (props) => {
                     className={css.Button}>Войти</Button>
                 </div>
             </div>
-            <Button className={css.buttonAI}>Chat AI</Button>
+            <Button  className={css.buttonAI}>Chat AI</Button>
         </>
     )
 }
