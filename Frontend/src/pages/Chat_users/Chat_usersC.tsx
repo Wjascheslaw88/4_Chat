@@ -1,15 +1,24 @@
 import { useParams } from "react-router-dom";
 import ChatUserP from "./Chat_usersP";
-import {  useState } from "react";
+import {  useState, FC } from "react";
+import { Message } from "../../types";
+
+type ChatUserProps = {
+    name:string
+}
+type Params = {
+    userName?: string;
+    chatName?: string;
+}
+type TextInputType = string
+
+const ChatUser:FC<ChatUserProps> = (props) => {
+
+    const [textInput, setTextInput] = useState<TextInputType>('');
+    const [messageDate, setMessageDate] = useState<Message[]>([])
 
 
-const ChatUser = (props) => {
-
-    const [textInput, setTextInput] = useState('');
-    const [messageDate, setMessageDate] = useState([])
-
-
-    let params = useParams();
+    const params = useParams<Params>();
     const userName = params.userName
     const chatName = params.chatName
 
@@ -19,7 +28,7 @@ const ChatUser = (props) => {
         
     }
 
-    const newMessage = (textInput) => {
+    const newMessage = (textInput:TextInputType) => {
         return async () => {
             fetch("http://localhost:3001/newMessage", {
                 headers: {

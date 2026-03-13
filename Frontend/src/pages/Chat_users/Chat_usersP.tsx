@@ -1,13 +1,23 @@
+import { FC } from "react";
 import MessageC from "../Message/MessageC";
 import css from "./Chat_users.module.css"
 import { Input } from "antd";
+import { Message } from "../../types";
 
+type ChatUserPProps = {
+    userName?: string;
+    users?: string;
+    chatName?: string;
+    messages?: Message[];
+    onSend?: any;
+    setTextInput?: any;
+    onSearch?: any;
+    textInput: string;
+}
 
-
-const ChatUserP = (props) => {
+const ChatUserP:FC<ChatUserPProps> = (props) => {
 
     const { Search } = Input;
-
 
     return (
         <div className={css.wrapper}>
