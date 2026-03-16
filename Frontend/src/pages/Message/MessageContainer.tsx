@@ -6,7 +6,6 @@ import Message from "./Message";
 
 const MessageContainer = () => {
 
-
     const [messages, setMessages] = useState<MessageType[]>([])
 
     useEffect(() => {
@@ -15,7 +14,6 @@ const MessageContainer = () => {
         const interval = setInterval(() => {
             fetchMessage()
         }, 500)
-
 
         return () => clearInterval(interval)
         // eslint-disable-next-line react-hooks/exhaustive-deps

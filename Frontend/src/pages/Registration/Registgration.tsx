@@ -1,18 +1,16 @@
-import React from "react";
+import { FC, ChangeEventHandler, MouseEventHandler } from "react";
 import css from "./registration.module.css"
 import { Button, Input } from "antd";
-import { ValueType } from "rc-input/lib/interface";
 
+type RegistrationProps = {
+    nickName: string;
+    chatName: string;
+    onClickButton: MouseEventHandler<HTMLElement>;
+    handleNickName: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+    handleChatName: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+}
 
-
-const Registration = (props: {
-    nickName: ValueType;
-    handleNickName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
-    chatName: ValueType;
-    handleChatName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
-    onClickButton: React.MouseEventHandler<HTMLElement>;
-}) => {
-
+const Registration: FC<RegistrationProps> = (props) => {
     return (
         <>
             <div className={css.wrapper} >
