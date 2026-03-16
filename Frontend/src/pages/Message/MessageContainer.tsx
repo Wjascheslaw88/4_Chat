@@ -40,9 +40,6 @@ const MessageContainer = () => {
                 const messageId = message.id || message.id || `msg-${Date.now()}-${Math.random()}`;
                 const isAuthor = userName === message?.author?.name
 
-
-
-
                 return (
                     <Message
                         key={messageId}
