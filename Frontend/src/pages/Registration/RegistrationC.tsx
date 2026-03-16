@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegistrationP from "./RegistgrationP";
 import Modal from "./Modal/Modal"
@@ -11,10 +11,10 @@ const Registration = () => {
     const [nickName, setNickName] = useState('');
     const [chatName, setChatName] = useState('');
 
-    const handleNickName = (e) => {
+    const handleNickName = (e: { target: { value: SetStateAction<string>; }; }) => {
         setNickName(e.target.value);
     };
-    const handleChatName = (e) => {
+    const handleChatName = (e: { target: { value: SetStateAction<string>; }; }) => {
         setChatName(e.target.value);
     };
 

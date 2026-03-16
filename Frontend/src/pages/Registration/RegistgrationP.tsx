@@ -1,10 +1,17 @@
 import React from "react";
 import css from "./Registration.module.css"
 import { Button, Input } from "antd";
+import { ValueType } from "rc-input/lib/interface";
 
 
 
-const RegistrationP = (props) => {
+const RegistrationP = (props: { 
+    nickName: ValueType; 
+    handleNickName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>; 
+    chatName: ValueType; 
+    handleChatName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+    onClickButton: React.MouseEventHandler<HTMLElement>; 
+    }) => {
 
     return (
         <>

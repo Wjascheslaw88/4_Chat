@@ -1,13 +1,13 @@
 
 import { useEffect, useState } from "react";
-import MessageP from "./MessageP"
 import { useParams } from "react-router-dom";
+import { Message } from "../../types";
+import MessageP from "./MessageP";
 
-
-const MessageC = (props) => {
+const MessageC = () => {
     
 
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState<Message[]>([])
     
     useEffect(() => {
         fetchMessage()
@@ -28,7 +28,7 @@ const MessageC = (props) => {
     const fetchMessage = async () => {
         fetch(`http://localhost:3001/messageByChatName?chatName=${chatName}`)
         .then(response => response.json())
-        .then(data => {
+        .then((data: Message) => {
             if (Array.isArray(data)) {
                 setMessages(data);
             }
@@ -37,9 +37,9 @@ const MessageC = (props) => {
     
     return (
         <div >
-            {messages.map(message => {
-                const messageId = message.id || message._id || `msg-${Date.now()}-${Math.random()}`;
-                const isAutor = userName === message?.author?.name
+            {messages.map((message: Message) => {
+                const messageId = message.id || message.id || `msg-${Date.now()}-${Math.random()}`;
+                const isAuthor = userName === message?.author?.name
                 
 
                    
@@ -48,8 +48,8 @@ const MessageC = (props) => {
                     <MessageP
                         key={messageId}
                         text={message.text}
-                        author={message.author.name}
-                        isAutor={isAutor}
+                        author={message.author}
+                        isAuthor={isAuthor}
                     />
                 )
             })}

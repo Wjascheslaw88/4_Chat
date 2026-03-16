@@ -8,7 +8,7 @@ type ChatUserPProps = {
     userName?: string;
     users?: string;
     chatName?: string;
-    messages?: Message[];
+    messages: Message[];
     onSend?: any;
     setTextInput?: any;
     onSearch?: any;
@@ -28,10 +28,7 @@ const ChatUserP:FC<ChatUserPProps> = (props) => {
             <div className={css.chat}>
                 <div className={css.nameChat}>{props.chatName}</div>
                 <div className={css.chat_field}>
-                    <MessageC
-                        messages={props.messages}
-                        userName={props.userName}
-                    />
+                    <MessageC/>
                 </div>
                 <div className={css.input}>
                     <Search
