@@ -1,52 +1,52 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Message } from "../../types";
-import MessageP from "./MessageP";
+import { MessageType } from "../../types";
+import Message from "./Message";
 
-const MessageC = () => {
-    
+const MessageContainer = () => {
 
-    const [messages, setMessages] = useState<Message[]>([])
-    
+
+    const [messages, setMessages] = useState<MessageType[]>([])
+
     useEffect(() => {
         fetchMessage()
-        
+
         const interval = setInterval(() => {
             fetchMessage()
         }, 500)
-        
+
 
         return () => clearInterval(interval)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+
     let params = useParams()
     const chatName = params.chatName
     const userName = params.userName
-    
-    
+
+
     const fetchMessage = async () => {
         fetch(`http://localhost:3001/messageByChatName?chatName=${chatName}`)
-        .then(response => response.json())
-        .then((data: Message) => {
-            if (Array.isArray(data)) {
-                setMessages(data);
-            }
-        })
+            .then(response => response.json())
+            .then((data: MessageType) => {
+                if (Array.isArray(data)) {
+                    setMessages(data);
+                }
+            })
     }
-    
+
     return (
         <div >
-            {messages.map((message: Message) => {
+            {messages.map((message: MessageType) => {
                 const messageId = message.id || message.id || `msg-${Date.now()}-${Math.random()}`;
                 const isAuthor = userName === message?.author?.name
-                
 
-                   
+
+
 
                 return (
-                    <MessageP
+                    <Message
                         key={messageId}
                         text={message.text}
                         author={message.author}
@@ -58,4 +58,4 @@ const MessageC = () => {
     )
 }
 
-export default MessageC;
+export default MessageContainer;

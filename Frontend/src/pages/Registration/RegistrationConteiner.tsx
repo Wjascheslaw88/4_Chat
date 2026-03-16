@@ -1,9 +1,9 @@
 import { SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import RegistrationP from "./RegistgrationP";
+import Registration from "./Registgration";
 import Modal from "./Modal/Modal"
 
-const Registration = () => {
+const RegistrationConteiner = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,15 +20,15 @@ const Registration = () => {
 
     const fetchNewChat = async () => {
         fetch("http://localhost:3001/newchat", {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "POST",
-                body: JSON.stringify({
-                    userName: nickName,
-                    chatName: chatName,
-                }),
-            })
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+                userName: nickName,
+                chatName: chatName,
+            }),
+        })
     }
 
     const onClickNewChat = fetchNewChat
@@ -57,7 +57,7 @@ const Registration = () => {
     };
     return (
         <>
-            <RegistrationP
+            <Registration
                 nickName={nickName}
                 chatName={chatName}
                 handleNickName={handleNickName}
@@ -65,7 +65,7 @@ const Registration = () => {
                 onClickButton={onClickButton}
             />
             {isModalOpen && <Modal
-            onClickNewChat={onClickNewChat}
+                onClickNewChat={onClickNewChat}
                 setNickName={nickName}
                 setChatName={chatName}
                 onClose={closeModal} />}
@@ -73,4 +73,4 @@ const Registration = () => {
     )
 }
 
-export default Registration;
+export default RegistrationConteiner;

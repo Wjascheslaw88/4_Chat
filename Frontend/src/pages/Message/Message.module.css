@@ -26,12 +26,15 @@
 
 /* Порядок элементов для моих сообщений */
 .myMessage .images {
-    order: 2;  /* Аватарка справа */
+    order: 2;
+    /* Аватарка справа */
 }
 
 .myMessage .nickAndMessage {
-    order: 1;  /* Текст слева от аватарки */
-    align-items: flex-end;  /* Текст прижат к правому краю */
+    order: 1;
+    /* Текст слева от аватарки */
+    align-items: flex-end;
+    /* Текст прижат к правому краю */
 }
 
 .nickAndMessage {
@@ -59,11 +62,13 @@
 
 /* Цвет сообщений */
 .myMessage .message {
-    background-color: #007bff;  /* Синий для моих */
+    background-color: #007bff;
+    /* Синий для моих */
     color: white;
 }
 
 .otherMessage .message {
-    background-color: #e9e9eb;  /* Серый для чужих */
+    background-color: #e9e9eb;
+    /* Серый для чужих */
     color: black;
 }

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import ChatUserP from "./Chat_usersP";
-import {  useState } from "react";
-import { Message } from "../../types";
+import ChatUser from "./ChatUsers";
+import { useState } from "react";
+import { MessageType } from "../../types";
 
 type Params = {
     userName?: string;
@@ -9,10 +9,10 @@ type Params = {
 }
 type TextInputType = string
 
-const ChatUser = () => {
+const ChatUsersConteiner = () => {
 
     const [textInput, setTextInput] = useState<TextInputType>('');
-    const [messageDate, setMessageDate] = useState<Message[]>([])
+    const [messageDate, setMessageDate] = useState<MessageType[]>([])
 
 
     const params = useParams<Params>();
@@ -22,10 +22,10 @@ const ChatUser = () => {
     const onSend = () => {
         newMessage(textInput)()
         setTextInput('');
-        
+
     }
 
-    const newMessage = (textInput:TextInputType) => {
+    const newMessage = (textInput: TextInputType) => {
         return async () => {
             fetch("http://localhost:3001/newMessage", {
                 headers: {
@@ -49,15 +49,15 @@ const ChatUser = () => {
     }
 
     return (
-        <ChatUserP
+        <ChatUser
             userName={userName}
             chatName={chatName}
             textInput={textInput}
             setTextInput={setTextInput}
             onSend={onSend}
-            messages={messageDate} 
+            messages={messageDate}
         />
     );
 };
 
-export default ChatUser;
+export default ChatUsersConteiner;

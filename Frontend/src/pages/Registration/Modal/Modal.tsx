@@ -1,15 +1,15 @@
 import { Button } from "antd"
-import css from "./Modal.module.css"
+import css from "./modal.module.css"
 import { MouseEventHandler } from "react";
 
 
 
 
-const Modal = (props: { 
-    setNickName: any; 
-    setChatName: any; 
-    onClickNewChat: MouseEventHandler<HTMLElement>; 
-    onClose: MouseEventHandler<HTMLElement>; 
+const Modal = (props: {
+    setNickName: any;
+    setChatName: any;
+    onClickNewChat: MouseEventHandler<HTMLElement>;
+    onClose: MouseEventHandler<HTMLElement>;
 }) => {
 
 

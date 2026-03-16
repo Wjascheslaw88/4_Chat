@@ -2,7 +2,7 @@
 export type Author = {
     name: string
 }
-export type Message = {
+export type MessageType = {
     id: string
     text: string
     chatName: string

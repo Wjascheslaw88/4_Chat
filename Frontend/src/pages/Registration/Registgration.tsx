@@ -1,17 +1,17 @@
 import React from "react";
-import css from "./Registration.module.css"
+import css from "./registration.module.css"
 import { Button, Input } from "antd";
 import { ValueType } from "rc-input/lib/interface";
 
 
 
-const RegistrationP = (props: { 
-    nickName: ValueType; 
-    handleNickName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>; 
-    chatName: ValueType; 
+const Registration = (props: {
+    nickName: ValueType;
+    handleNickName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+    chatName: ValueType;
     handleChatName: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
-    onClickButton: React.MouseEventHandler<HTMLElement>; 
-    }) => {
+    onClickButton: React.MouseEventHandler<HTMLElement>;
+}) => {
 
     return (
         <>
@@ -38,14 +38,14 @@ const RegistrationP = (props: {
                         value={props.chatName}
                         onChange={props.handleChatName}
                     />
-                    <Button 
-                    onClick={props.onClickButton}
-                    className={css.Button}>Войти</Button>
+                    <Button
+                        onClick={props.onClickButton}
+                        className={css.Button}>Войти</Button>
                 </div>
             </div>
-            <Button  className={css.buttonAI}>Chat AI</Button>
+            <Button className={css.buttonAI}>Chat AI</Button>
         </>
     )
 }
 
-export default RegistrationP;
+export default Registration;

@@ -1,21 +1,21 @@
 import { FC } from "react";
-import MessageC from "../Message/MessageC";
-import css from "./Chat_users.module.css"
+import Message from "../Message/MessageContainer";
+import css from "./chat-users.module.css"
 import { Input } from "antd";
-import { Message } from "../../types";
+import { MessageType } from "../../types";
 
 type ChatUserPProps = {
     userName?: string;
     users?: string;
     chatName?: string;
-    messages: Message[];
+    messages: MessageType[];
     onSend?: any;
     setTextInput?: any;
     onSearch?: any;
     textInput: string;
 }
 
-const ChatUserP:FC<ChatUserPProps> = (props) => {
+const ChatUser: FC<ChatUserPProps> = (props) => {
 
     const { Search } = Input;
 
@@ -28,7 +28,7 @@ const ChatUserP:FC<ChatUserPProps> = (props) => {
             <div className={css.chat}>
                 <div className={css.nameChat}>{props.chatName}</div>
                 <div className={css.chat_field}>
-                    <MessageC/>
+                    <Message />
                 </div>
                 <div className={css.input}>
                     <Search
@@ -37,7 +37,7 @@ const ChatUserP:FC<ChatUserPProps> = (props) => {
                         enterButton="Search"
                         size="large"
                         onSearch={props.onSend}
-                        onChange={(sss) => {props.setTextInput(sss.target.value)}}
+                        onChange={(sss) => { props.setTextInput(sss.target.value) }}
                         value={props.textInput}
                     />
                 </div>
@@ -45,4 +45,4 @@ const ChatUserP:FC<ChatUserPProps> = (props) => {
         </div>)
 }
 
-export default ChatUserP;
+export default ChatUser;
