@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import ChatUserP from "./Chat_usersP";
-import {  useState, FC } from "react";
+import {  useState } from "react";
 import { Message } from "../../types";
 
 type Params = {
