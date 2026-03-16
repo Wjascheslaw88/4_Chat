@@ -3,16 +3,13 @@ import ChatUserP from "./Chat_usersP";
 import {  useState, FC } from "react";
 import { Message } from "../../types";
 
-type ChatUserProps = {
-    name:string
-}
 type Params = {
     userName?: string;
     chatName?: string;
 }
 type TextInputType = string
 
-const ChatUser:FC<ChatUserProps> = (props) => {
+const ChatUser = () => {
 
     const [textInput, setTextInput] = useState<TextInputType>('');
     const [messageDate, setMessageDate] = useState<Message[]>([])

@@ -10,7 +10,7 @@ const Router = () => {
     return (
         <Routes>
             <Route path="/" element={<Registration />}></Route>
-            <Route path="/:chatName/:userName" element={<ChatUserC name={""}/>}></Route>
+            <Route path="/:chatName/:userName" element={<ChatUserC />}></Route>
             <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
     )
