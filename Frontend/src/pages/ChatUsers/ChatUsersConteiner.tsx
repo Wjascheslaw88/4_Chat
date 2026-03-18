@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import ChatUser from "./ChatUsers";
 import { useState } from "react";
-import { useMessageStore } from "../../store/useStore"
+import { useNewMessageStore } from "../../store/useNewMessageStore"
 
 
 type Params = {
@@ -10,10 +10,10 @@ type Params = {
 }
 
 const ChatUsersConteiner = () => {
-    
+
     const params = useParams<Params>();
 
-    const {messageData, newMessage } = useMessageStore()
+    const { messageData, newMessage } = useNewMessageStore()
 
     const [textInput, setTextInput] = useState<string>('');
 

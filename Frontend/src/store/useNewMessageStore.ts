@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 import { MessageType } from '../types'
 
-type UseMessageStore = {
+type UseNewMessageStore = {
     messageData: MessageType[]
     newMessage: (textInput: string, chatName: string, author: string) => void
 }
 
-export const useMessageStore = create<UseMessageStore>((set) => ({
+export const useNewMessageStore = create<UseNewMessageStore>((set) => ({
     messageData: [],
     newMessage: (textInput: string, chatName: string, author: string) => {
         fetch("http://localhost:3001/newMessage", {

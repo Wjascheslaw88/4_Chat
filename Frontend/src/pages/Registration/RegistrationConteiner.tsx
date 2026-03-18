@@ -1,60 +1,49 @@
 import { SetStateAction, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Registration from "./Registgration";
 import Modal from "./Modal/Modal"
+import { useNewChat } from "../../store/useNewChat";
+import { useChatName } from "../../store/useChatName";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationConteiner = () => {
+
+    const { NewChat } = useNewChat()
+    const { ChatName } = useChatName()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const navigate = useNavigate()
+
     const [nickName, setNickName] = useState('');
     const [chatName, setChatName] = useState('');
 
     const handleNickName = (e: { target: { value: SetStateAction<string>; }; }) => {
         setNickName(e.target.value);
     };
-    const handleChatName = (e: { target: { value: SetStateAction<string>; }; }) => {
+
+    const handleChatName = (e: {
+        target: {
+            value: SetStateAction<string>;
+        };
+    }) => {
         setChatName(e.target.value);
     };
-
-    const fetchNewChat = async () => {
-        fetch("http://localhost:3001/newchat", {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify({
-                userName: nickName,
-                chatName: chatName,
-            }),
-        })
-    }
-
-    const onClickNewChat = fetchNewChat
-
-    const fetchChatName = async () => {
-        fetch(`http://localhost:3001/chat/${chatName}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    setIsModalOpen(true);
-                    return;
-                }
-                console.log('Найден чат:', data);
-                navigate(`/${chatName}/${nickName}`);
-            })
-            .catch(error => {
-                console.error('Ошибка сети:', error);
-                setIsModalOpen(false);
-            });
-    };
-
-    const onClickButton = fetchChatName
 
     const closeModal = () => {
         setIsModalOpen(false);
     };
+
+    const handleCheckChat = async () => {
+        const data = await ChatName(chatName);  // получаем данные
+
+        if (data.error) {
+            setIsModalOpen(true);  // открываем модалку
+        } else {
+            console.log('Найден чат:', data);
+            navigate(`/${chatName}/${nickName}`);
+        }
+    };
+
     return (
         <>
             <Registration
@@ -62,10 +51,10 @@ const RegistrationConteiner = () => {
                 chatName={chatName}
                 handleNickName={handleNickName}
                 handleChatName={handleChatName}
-                onClickButton={onClickButton}
+                onClickButton={handleCheckChat}
             />
             {isModalOpen && <Modal
-                onClickNewChat={onClickNewChat}
+                onClickNewChat={() => NewChat(nickName, chatName)}
                 setNickName={nickName}
                 setChatName={chatName}
                 onClose={closeModal} />}
