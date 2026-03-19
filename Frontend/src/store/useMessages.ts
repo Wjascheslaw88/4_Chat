@@ -1,14 +1,31 @@
 import { create } from 'zustand'
 import { MessageType } from '../types'
 
-type UseNewMessageStore = {
+interface MessageStore {
+    getMessageData: (chatName: string) => Promise<any>;
     messageData: MessageType[]
+    messagesData: MessageType[]
     newMessage: (textInput: string, chatName: string, author: string) => void
 }
 
-export const useNewMessageStore = create<UseNewMessageStore>((set) => ({
+
+export const useMessages = create<MessageStore>((set) => ({
+
+    messagesData: [],
+
+    getMessageData: async (chatName: any) => {
+
+        fetch(`http://localhost:3001/messageByChatName?chatName=${chatName}`)
+        .then((response) => response.json())
+        .then((data) => {
+                set({ messagesData: data })
+
+        })
+},
+    
     messageData: [],
-    newMessage: (textInput: string, chatName: string, author: string) => {
+    
+   newMessage: (textInput: string, chatName: string, author: string) => {
         fetch("http://localhost:3001/newMessage", {
             headers: {
                 "Content-Type": "application/json",
@@ -28,5 +45,7 @@ export const useNewMessageStore = create<UseNewMessageStore>((set) => ({
                 }
             });
     }
-})
-)
+}))
+
+
+

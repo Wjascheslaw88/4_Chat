@@ -1,14 +1,13 @@
 import { SetStateAction, useState } from "react";
 import Registration from "./Registgration";
 import Modal from "./Modal/Modal"
-import { useNewChat } from "../../store/useNewChat";
-import { useChatName } from "../../store/useChatName";
 import { useNavigate } from "react-router-dom";
+import {useChats} from '../../store/useChats'
 
 const RegistrationConteiner = () => {
 
-    const { NewChat } = useNewChat()
-    const { ChatName } = useChatName()
+
+    const { ChatName, NewChat } = useChats()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -34,10 +33,9 @@ const RegistrationConteiner = () => {
     };
 
     const handleCheckChat = async () => {
-        const data = await ChatName(chatName);  // получаем данные
-
+        const data = await ChatName(chatName);
         if (data.error) {
-            setIsModalOpen(true);  // открываем модалку
+            setIsModalOpen(true);
         } else {
             console.log('Найден чат:', data);
             navigate(`/${chatName}/${nickName}`);
@@ -63,3 +61,4 @@ const RegistrationConteiner = () => {
 }
 
 export default RegistrationConteiner;
+

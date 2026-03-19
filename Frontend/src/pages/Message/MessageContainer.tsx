@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MessageType } from "../../types";
 import Message from "./Message";
-import { useMessage } from "../../store/useMessage";
+import { useMessages } from "../../store/useMessages";
 
 const MessageContainer = () => {
 
-    const { MessageData } = useMessage()
-    const [messages, setMessages] = useState<MessageType[]>([])
-
-    const getMessages = async () => {
-        const messages = await MessageData(chatName);
-        setMessages(messages)
-    }
+    const { getMessageData, messagesData } = useMessages()
+  
     useEffect(() => {
-        getMessages()
+         getMessageData(chatName)
 
         const interval = setInterval(() => {
-            getMessages()
+             getMessageData(chatName)
         }, 500)
 
         return () => clearInterval(interval)
@@ -29,7 +24,7 @@ const MessageContainer = () => {
 
     return (
         <div >
-            {messages.map((message: MessageType) => {
+            {messagesData.map((message: MessageType) => {
                 const messageId = message.id || message.id || `msg-${Date.now()}-${Math.random()}`;
                 const isAuthor = params.userName === message?.author?.name
 
