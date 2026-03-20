@@ -1,15 +1,19 @@
+// презинтационная компонента
 import { FC } from "react";
 import css from "./message.module.css"
 import { Author } from "../../types";
 
+// определение типов  TS
 interface MessagePProps {
     text: string;
     author: Author;
     isAuthor: boolean;
 }
 
+// компонент с названием и типом котроная принимает 3 свойства из props
 const Message: FC<MessagePProps> = ({ text, author, isAuthor }) => {
 
+    // определение какой css испрользовать c помощью тернарного оператора 
     const messageClass = isAuthor ? css.myMessage : css.otherMessage;
 
     return (

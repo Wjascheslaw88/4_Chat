@@ -1,10 +1,11 @@
+// компонента модального окна регистрации
 import { Button } from "antd"
 import css from "./modal.module.css"
 import { MouseEventHandler } from "react";
 
 
 
-
+// в модальное окно с помощью props прокидываются данные
 const Modal = (props: {
     setNickName: any;
     setChatName: any;
@@ -12,7 +13,9 @@ const Modal = (props: {
     onClose: MouseEventHandler<HTMLElement>;
 }) => {
 
-
+    // на первый onClick вешается функция которую запросили с State для создания нового чата 
+    // на второй onClick вешается функция которая изменяет состояние модального окна на false и закрывает модальное окно
+    // в span написал сообщение и проктинул текст состояния в данный момент названия чата и имени
     return (
         <div className={css.wrapper}>
             <span className={css.span}>{`do you want to add a chat with ${props.setNickName} and ${props.setChatName}`} </span>

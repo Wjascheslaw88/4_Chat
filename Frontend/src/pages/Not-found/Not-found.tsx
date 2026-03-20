@@ -1,3 +1,4 @@
+// компонента заглушка
 import React from "react";
 
 const NotFound = () => {

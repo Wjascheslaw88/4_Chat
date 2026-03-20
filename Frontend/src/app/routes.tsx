@@ -8,6 +8,8 @@ const Router = () => {
 
 
     return (
+        // разделение на страницы, присвоение URL
+        // /:chatName и /:userName подменяемые, определяет порядок в URL
         <Routes>
             <Route path="/" element={<Registration />}></Route>
             <Route path="/:chatName/:userName" element={<ChatUsersConteiner />}></Route>

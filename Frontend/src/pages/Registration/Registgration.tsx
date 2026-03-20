@@ -1,7 +1,9 @@
+// презентационная компонента
 import { FC, ChangeEventHandler, MouseEventHandler } from "react";
 import css from "./registration.module.css"
 import { Button, Input } from "antd";
 
+// типизация по TS
 type RegistrationProps = {
     nickName: string;
     chatName: string;
