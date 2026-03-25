@@ -16,12 +16,10 @@ export const useMessages = create<MessageStore>((set) => ({
     messagesData: [],
     // создаем асинхронную функцию с get запросом на back с именем получая данные и распаршивая запись в data которую мы положим в массив messagesDataи данные будут доступны в react через массив
     getMessageData: async (chatName: any) => {
-
         fetch(`http://localhost:3001/messageByChatName?chatName=${chatName}`)
         .then((response) => response.json())
         .then((data) => {
                 set({ messagesData: data })
-
         })
 },
     
