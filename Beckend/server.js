@@ -53,6 +53,10 @@ app.get ('/messageByChatName', (req, res) =>{
   res.json(message);
 })
 
+app.get('/api/users', (req, res) => {
+    const users = findAllUsers();
+    res.json(users);
+});
 
 
 // Запускаем сервер
