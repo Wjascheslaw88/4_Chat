@@ -15,12 +15,17 @@ const Administrator: FC<AdministratorType> = ({children}) => {
         roles: ["ADMIN","USER"],
         permission: ["EDIT","CREATE","ADMIN_PANEL"]
     })
+
+
+
+    // относилтелоьно 1 юзера нужно
     // при первой отрисовке хук запрашивает всех пользоватетелей с сервера
     useEffect(()=> {
-        fetch('http://localhost:3001/api/users')
+        fetch('http://localhost:3001')
         .then(res => res.json())
         .then(setUserData)
     },[])
+
     // проеверяет на наличие определенныой роли
    const checkRole = (role: string) => {
         return userData.roles.includes(role)
@@ -33,7 +38,7 @@ const Administrator: FC<AdministratorType> = ({children}) => {
     const value ={
         checkPermission: checkPermission,
         checkRole: checkRole,
-        
+
     };
     // Оборачиваем дочерние компоненты в Provider, чтобы они имели доступ к value
     // {children} - это все компоненты, которые будут вложены в Administrator
@@ -43,4 +48,5 @@ const Administrator: FC<AdministratorType> = ({children}) => {
         </ThemeContext.Provider>
     )      
 }
+
 export {Administrator}
