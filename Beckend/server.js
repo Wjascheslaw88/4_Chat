@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const{chat_1, chat1} = require('./chat1')
-const chat2 = require('./chat2')
 const {findUsrersByChatName, findChatName, createNewChat, creatNewMessage, findMessagesByChatName } = require('./data')
 require('dotenv').config();
 
@@ -10,6 +8,7 @@ const app = express();
 
 // Определяем порт (из .env или 3000 по умолчанию)
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST;
 
 // Middleware
 app.use(cors()); // Разрешаем кросс-доменные запросы
@@ -60,7 +59,7 @@ app.get('/api/users', (req, res) => {
 
 
 // Запускаем сервер
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`🚀 Сервер запущен на порту ${PORT}`);
   console.log(`📝 Тестовый маршрут: http://localhost:${PORT}`);
   console.log(`💬 API чата: http://localhost:${PORT}/api/chat`);
