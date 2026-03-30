@@ -16,6 +16,7 @@ const RegistrationConteiner = () => {
     // хук состояния до и после в поле заполнения для локального сохранения данных с полей ввода
     const [nickName, setNickName] = useState('');
     const [chatName, setChatName] = useState('');
+    
     // обработчик именения и записи в состояние вызывается при вводе в поле
     const handleNickName = (e: { target: { value: SetStateAction<string>; }; }) => {
         setNickName(e.target.value);

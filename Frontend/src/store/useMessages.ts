@@ -16,7 +16,7 @@ export const useMessages = create<MessageStore>((set) => ({
     messagesData: [],
     // создаем асинхронную функцию с get запросом на back с именем получая данные и распаршивая запись в data которую мы положим в массив messagesDataи данные будут доступны в react через массив
     getMessageData: async (chatName: any) => {
-        fetch(`http://localhost:3001/messageByChatName?chatName=${chatName}`)
+        fetch(`/messageByChatName?chatName=${chatName}`)
         .then((response) => response.json())
         .then((data) => {
                 set({ messagesData: data })
@@ -27,7 +27,7 @@ export const useMessages = create<MessageStore>((set) => ({
     // создаем асинхронную функцию с post запросом на back с данными получая обратный ответ и распаршивая запись в  dаtа которую мы положим в массив messageData данные будут доступны в react через массив
     // массив копируется с данными из state и добовляется в конец списка новое сообщение
    newMessage: (textInput: string, chatName: string, author: string) => {
-        fetch("http://localhost:3001/newMessage", {
+        fetch("/newMessage", {
             headers: {
                 "Content-Type": "application/json",
             },

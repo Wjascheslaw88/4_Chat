@@ -21,7 +21,7 @@ const Administrator: FC<AdministratorType> = ({children}) => {
     // относилтелоьно 1 юзера нужно
     // при первой отрисовке хук запрашивает всех пользоватетелей с сервера
     useEffect(()=> {
-        fetch('http://localhost:3001')
+        fetch('/')
         .then(res => res.json())
         .then(setUserData)
     },[])
