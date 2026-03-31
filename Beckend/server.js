@@ -56,10 +56,24 @@ app.get('/api/users', (req, res) => {
     const users = findAllUsers();
     res.json(users);
 });
-
-
+/////
+// Маршрут для /chat1/:id (фронтенд отправляет запросы в таком формате)
+app.get('/chat1/:id', (req, res) => {
+  const chatId = req.params.id;
+  console.log(`Запрос чата по ID: ${chatId}`);
+  
+  // Используем существующую функцию findChatName
+  const chat = findChatName(chatId);
+  
+  if (chat) {
+    res.json(chat);
+  } else {
+    res.status(404).json({ error: 'Chat not found' });
+  }
+});
 // Запускаем сервер
 app.listen(PORT, HOST, () => {
+
   console.log(`🚀 Сервер запущен на порту ${PORT}`);
   console.log(`📝 Тестовый маршрут: http://localhost:${PORT}`);
   console.log(`💬 API чата: http://localhost:${PORT}/api/chat`);
