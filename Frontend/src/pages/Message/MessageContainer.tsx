@@ -13,14 +13,7 @@ const MessageContainer = () => {
     // вызов при первой отрисовке хук жизненного цикла
     useEffect(() => {
         getMessageData(params.chatName)
-        // интервальный вызов функции
-        const interval = setInterval(() => {
-            getMessageData(params.chatName)
-        }, 500)
-        // завершение интервального вызова после закрытия компоненты
-        return () => clearInterval(interval)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [messagesData])
 
     // возможность доставать данный из URL
     let params = useParams()
