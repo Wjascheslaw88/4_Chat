@@ -3,6 +3,7 @@ const cors = require('cors');
 const {findUsrersByChatName, findChatName, createNewChat, creatNewMessage, findMessagesByChatName } = require('./data')
 require('dotenv').config();
 const { WebSocketServer } = require('ws');
+const http = require('http')
 
 // Создаем приложение Express
 const app = express();
@@ -14,9 +15,24 @@ const HOST = process.env.HOST;
 // Middleware
 app.use(cors()); // Разрешаем кросс-доменные запросы
 app.use(express.json()); // Парсим JSON из запросов
+////////////////// WebSocket //////////////////////////////////////////////
+const server = http.createServer(app)
+const wss = new WebSocketServer({ server })
 
-
-//////////////////HTTP запросы///////////////////////////////////////////
+wss.on('connection', (ws)=> {
+  ws.on("message", (Data)=> {
+    const data = JSON.parse(Data) 
+    if (data.type === "getMessages") {
+      const messages = findMessagesByChatName(data.chatName)
+      ws.send(JSON.stringify({type: "getMessagesResult", messages: messages}))
+    }
+    if (data.type === "newMessage") {
+      const newMessage = creatNewMessage(data.text, data.chatName, data.author)
+      ws.send(JSON.stringify({type:"newMessageResult", message: newMessage}))
+    }
+  })
+})
+////////////////// HTTP запросы ///////////////////////////////////////////
 app.get('/users', (req, res) => {
   const chatName = req.query.chatName; 
   const users = findUsrersByChatName(chatName)
@@ -40,19 +56,19 @@ app.get('/chat/:chatName', (req, res) =>{
   }
 });
 
-app.post ('/NewMessage',(req, res)=>{
-  const text = req.body.text
-  const chatName = req.body.chatName
-  const author = req.body.author
-  const newMessage = creatNewMessage(text,chatName,author)
-  return newMessage
-})
+// app.post ('/NewMessage',(req, res)=>{
+//   const text = req.body.text
+//   const chatName = req.body.chatName
+//   const author = req.body.author
+//   const newMessage = creatNewMessage(text,chatName,author)
+//   return newMessage
+// })
 
-app.get ('/messageByChatName', (req, res) =>{
-  const chatName = req.query.chatName; 
-  const message = findMessagesByChatName(chatName)
-  res.json(message);
-})
+// app.get ('/messageByChatName', (req, res) =>{
+//   const chatName = req.query.chatName; 
+//   const message = findMessagesByChatName(chatName)
+//   res.json(message);
+// })
 
 app.get('/api/users', (req, res) => {
     const users = findAllUsers();
@@ -74,9 +90,6 @@ app.get('/chat1/:id', (req, res) => {
   }
 });
 // Запускаем сервер
-app.listen(PORT, HOST, () => {
-
+server.listen(PORT, HOST, () => {
   console.log(`🚀 Сервер запущен на порту ${PORT}`);
-  console.log(`📝 Тестовый маршрут: http://localhost:${PORT}`);
-  console.log(`💬 API чата: http://localhost:${PORT}/api/chat`);
-});
+})

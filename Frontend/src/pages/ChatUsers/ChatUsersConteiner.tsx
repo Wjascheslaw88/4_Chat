@@ -17,7 +17,7 @@ const ChatUsersConteiner = () => {
     const params = useParams<Params>();
 
     // кастомный хук позволяющий свзываться с zustand
-    const { messageData, newMessage } = useMessages()
+    const { messagesData, newMessage } = useMessages()
 
     // хук состояния встроенный в react
     //        до           после      состояние в котором кадждое изменение заменяет начальное состояние
@@ -38,7 +38,7 @@ const ChatUsersConteiner = () => {
             textInput={textInput}
             setTextInput={setTextInput}
             onSend={onSend}
-            messages={messageData}
+            messages={messagesData}
         />
     );
 };

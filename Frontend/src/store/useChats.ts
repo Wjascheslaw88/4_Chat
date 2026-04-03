@@ -15,6 +15,7 @@ export const useChats = create<ChatNameType>((set) => ({
         const data = await response.json();
         return data;
     },
+
     // создаем синхронную функцию с post запросом на отправку названия чата и имени 
     NewChat: (nickName: string, chatName: string) => {
         fetch("/newchat", {
