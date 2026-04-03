@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const {findUsrersByChatName, findChatName, createNewChat, creatNewMessage, findMessagesByChatName } = require('./data')
 require('dotenv').config();
+const { WebSocketServer } = require('ws');
 
 // Создаем приложение Express
 const app = express();
@@ -14,7 +15,8 @@ const HOST = process.env.HOST;
 app.use(cors()); // Разрешаем кросс-доменные запросы
 app.use(express.json()); // Парсим JSON из запросов
 
-// http://localhost:3001/users?chatName={}
+
+//////////////////HTTP запросы///////////////////////////////////////////
 app.get('/users', (req, res) => {
   const chatName = req.query.chatName; 
   const users = findUsrersByChatName(chatName)
