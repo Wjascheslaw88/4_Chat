@@ -1,11 +1,18 @@
-import React from "react";
-import css from "./Registration.module.css"
+// презентационная компонента
+import { FC, ChangeEventHandler, MouseEventHandler } from "react";
+import css from "./registration.module.css"
 import { Button, Input } from "antd";
 
+// типизация по TS
+type RegistrationProps = {
+    nickName: string;
+    chatName: string;
+    onClickButton: MouseEventHandler<HTMLElement>;
+    handleNickName: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+    handleChatName: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+}
 
-
-const RegistrationP = (props) => {
-
+const Registration: FC<RegistrationProps> = (props) => {
     return (
         <>
             <div className={css.wrapper} >
@@ -31,14 +38,14 @@ const RegistrationP = (props) => {
                         value={props.chatName}
                         onChange={props.handleChatName}
                     />
-                    <Button 
-                    onClick={props.onClickButton}
-                    className={css.Button}>Войти</Button>
+                    <Button
+                        onClick={props.onClickButton}
+                        className={css.Button}>Войти</Button>
                 </div>
             </div>
-            <Button className={css.buttonAI}>Chat AI</Button>
+            {/* <Button className={css.buttonAI}>Chat AI</Button> */}
         </>
     )
 }
 
-export default RegistrationP;
+export default Registration;
