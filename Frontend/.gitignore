@@ -8,7 +8,7 @@ node_modules/
 Beckend/node_modules/
 # testing
 /coverage
-
+.vscode/
 # production
 /build
 
